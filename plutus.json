@@ -1,0 +1,194 @@
+{
+  "preamble": {
+    "title": "aiken-lang/frac",
+    "description": "Aiken contracts for project 'aiken-lang/frac'",
+    "version": "0.0.0",
+    "plutusVersion": "v2",
+    "compiler": {
+      "name": "Aiken",
+      "version": "v1.0.26-alpha+unknown"
+    },
+    "license": "Apache-2.0"
+  },
+  "validators": [
+    {
+      "title": "frac.distro",
+      "datum": {
+        "title": "d",
+        "schema": {
+          "$ref": "#/definitions/frac~1DisDatum"
+        }
+      },
+      "redeemer": {
+        "title": "r",
+        "schema": {
+          "$ref": "#/definitions/frac~1DisAction"
+        }
+      },
+      "parameters": [
+        {
+          "title": "owner",
+          "schema": {
+            "$ref": "#/definitions/ByteArray"
+          }
+        }
+      ],
+      "compiledCode": "58db010000323232323232232232232253330083253330093370e90011bad3001300b375400829444c8cc004004dd618071807980798079807980798079807980798061baa3002300c375400644a66601c00229404c94ccc030cdc79bae301000200a14a226600600600260200024601a00229309b2b299980319b8748000c01cdd5000899191919299980698078010a4c2c6eb4c034004c034008dd6980580098041baa0011653330043370e900018029baa001132325333009300b002149858dd6980480098031baa00116375c002ae6955ceaab9e5573eae855d101",
+      "hash": "d059efc2364082076076844e2267d6bace69da2c17de69df7c380bc1"
+    },
+    {
+      "title": "frac.lock",
+      "datum": {
+        "title": "d",
+        "schema": {
+          "$ref": "#/definitions/frac~1LockDatum"
+        }
+      },
+      "redeemer": {
+        "title": "r",
+        "schema": {
+          "$ref": "#/definitions/frac~1LockAction"
+        }
+      },
+      "parameters": [
+        {
+          "title": "owner",
+          "schema": {
+            "$ref": "#/definitions/ByteArray"
+          }
+        },
+        {
+          "title": "cs",
+          "schema": {
+            "$ref": "#/definitions/ByteArray"
+          }
+        }
+      ],
+      "compiledCode": "58e00100003232323232322322322322322533300a32533300b3370e90011bad3001300d3754008264660020026eb0c040c044c044c044c044c044c044c044c044c038dd5180118071baa00322533301000114a0264a66601c66e3cdd718090010060a51133003003001301200114a24601e00229309b2b299980419b8748000c024dd5000899191919299980798088010a4c2c6eb4c03c004c03c008dd6980680098051baa0011653330063370e900018039baa00113232533300b300d002149858dd6980580098041baa00116375c0026eb80055cd2ab9d5573caae7d5d0aba201",
+      "hash": "ddb2cabd19de06272cafc566a47eedfa17bfb1085947e812dfa11823"
+    },
+    {
+      "title": "frac.mint",
+      "redeemer": {
+        "title": "r",
+        "schema": {
+          "$ref": "#/definitions/frac~1MintAction"
+        }
+      },
+      "parameters": [
+        {
+          "title": "owner",
+          "schema": {
+            "$ref": "#/definitions/ByteArray"
+          }
+        }
+      ],
+      "compiledCode": "59043d010000323232323232322322323225333007323232533300a3006300b3754002264646464646464646464a66602e6034004264646464a66603064660020026eb0c078c07cc07cc07cc07cc07cc07cc07cc07cc06cdd500891299980e8008a50132533301b3371e6eb8c08000806452889980180180098100008991919191919299980f18079bad30233020375403626464a66604066002028464a66604466e1d200430233754002264602866600a6eacc01cc094dd500180c807981398121baa001163004302337540022a66604066002028466e1cccc00cdd5980298119baa00101700b375a600a60466ea80784c8c8c94ccc08cc05003854ccc08ccdc38061bad3007302537540402a666046004200229405280a503300800c3300900248008cc01c034cc02000520003005375c600660446ea8074585888c8cc00400400c894ccc0980045280992999812180218148010a5113300300300130290012223253330223013302337540022900009bad30273024375400264a666044602660466ea8004530103d87a80001323300100137566050604a6ea8008894ccc09c004530103d87a8000132323253330273371e00e6eb8c0a000c4c068cc0acdd4000a5eb804cc014014008dd6981400118158011814800998098018010991919299981099b8700c4800454ccc084cdc380519b8148000dd6980298119baa01e15333021002100114a029405281980300519803801240046600a0166600c002900018019bae300130203754036460466048604800246044604600246466600200297ae110544000643b000810544001bc28000198109ba900233021375200497ae0222533302200214bd700991929998120018a5eb804cc094dd499b8a002375c604c00666600a00a002604e006604c0066eb8c090008894ccc070c060c074dd5000899b8f002375c6042603c6ea800458c0040048894ccc078008530103d87a800013232533301d30190031301033021375200497ae0133300500500133700006900098110019bae302000216375a60320086eb8c05c00cdd6980b8021bae301500316301800130180023016001325333011300230123754002297adef6c6013756602c60266ea8004cc008c8cc004004dd5980b180b980b80311299980a8008a5eb7bdb1804c8c8c8c94ccc058cdc7a44100002100313301a337606ea4008dd3000998030030019bab3017003375c602a0046032004602e00200c6e1d200222323300100100322533301500114c103d87a8000132323253330153371e00c6eb8c05800c4c020cc064dd3000a5eb804cc014014008dd5980b001180c801180b8009ba548000dd618088009808980898069baa003375c601e60186ea800458c038c03c008c034004c024dd50008a4c26caca66600a6002600c6ea80084c8c8c8c8c8c94ccc038c04400852616375c601e002601e0046eb4c034004c034008dd6980580098039baa00216370e90001bae0015734aae7555cf2ab9f5740ae855d101",
+      "hash": "72fe4715a9e8a53e210145ad19f4e5ec000baf17f73a0ebc299a5c75"
+    }
+  ],
+  "definitions": {
+    "ByteArray": {
+      "dataType": "bytes"
+    },
+    "Int": {
+      "dataType": "integer"
+    },
+    "frac/DisAction": {
+      "title": "DisAction",
+      "anyOf": [
+        {
+          "title": "DisAction",
+          "dataType": "constructor",
+          "index": 0,
+          "fields": [
+            {
+              "title": "a",
+              "$ref": "#/definitions/Int"
+            },
+            {
+              "title": "b",
+              "$ref": "#/definitions/Int"
+            }
+          ]
+        }
+      ]
+    },
+    "frac/DisDatum": {
+      "title": "DisDatum",
+      "anyOf": [
+        {
+          "title": "DisDatum",
+          "dataType": "constructor",
+          "index": 0,
+          "fields": [
+            {
+              "title": "a",
+              "$ref": "#/definitions/Int"
+            }
+          ]
+        }
+      ]
+    },
+    "frac/LockAction": {
+      "title": "LockAction",
+      "anyOf": [
+        {
+          "title": "LockAction",
+          "dataType": "constructor",
+          "index": 0,
+          "fields": [
+            {
+              "title": "a",
+              "$ref": "#/definitions/Int"
+            },
+            {
+              "title": "b",
+              "$ref": "#/definitions/Int"
+            }
+          ]
+        }
+      ]
+    },
+    "frac/LockDatum": {
+      "title": "LockDatum",
+      "anyOf": [
+        {
+          "title": "LockDatum",
+          "dataType": "constructor",
+          "index": 0,
+          "fields": [
+            {
+              "title": "a",
+              "$ref": "#/definitions/Int"
+            }
+          ]
+        }
+      ]
+    },
+    "frac/MintAction": {
+      "title": "MintAction",
+      "anyOf": [
+        {
+          "title": "MintAction",
+          "dataType": "constructor",
+          "index": 0,
+          "fields": [
+            {
+              "title": "a",
+              "$ref": "#/definitions/Int"
+            },
+            {
+              "title": "b",
+              "$ref": "#/definitions/Int"
+            },
+            {
+              "title": "tn",
+              "$ref": "#/definitions/ByteArray"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
