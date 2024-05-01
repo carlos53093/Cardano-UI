@@ -1,11 +1,11 @@
-name = "aiken-lang/frac"
+name = "aiken-lang/nft_mint"
 version = "0.0.0"
 license = "Apache-2.0"
-description = "Aiken contracts for project 'aiken-lang/frac'"
+description = "Aiken contracts for project 'aiken-lang/nft_mint'"
 
 [repository]
 user = "aiken-lang"
-project = "frac"
+project = "nft_mint"
 platform = "github"
 
 [[dependencies]]

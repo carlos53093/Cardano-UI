@@ -1,12 +1,12 @@
 import {
-  MintingPolicy,
-  SpendingValidator,
   applyDoubleCborEncoding,
   applyParamsToScript,
   Constr,
   fromText,
   Lucid,
+  MintingPolicy,
   OutRef,
+  SpendingValidator,
 } from "lucid/mod.ts";
 
 import blueprint from "~/plutus.json" assert { type: "json" };
@@ -17,13 +17,15 @@ export type Validators = {
 };
 
 export function readValidators(): Validators {
-  const redeem = blueprint.validators.find((v) => v.title === "frac.distro");
+  const redeem = blueprint.validators.find((v) => v.title === "oneshot.redeem");
 
   if (!redeem) {
     throw new Error("Redeem validator not found");
   }
 
-  const giftCard = blueprint.validators.find((v) => v.title === "frac.mint");
+  const giftCard = blueprint.validators.find(
+    (v) => v.title === "oneshot.gift_card",
+  );
 
   if (!giftCard) {
     throw new Error("Gift Card validator not found");
@@ -41,44 +43,6 @@ export function readValidators(): Validators {
   };
 }
 
-export function readMintValidator(ownerPKH: any): Promise<MintingPolicy> {
-  const validator = blueprint.validators[2];
-
-  return {
-    type: "PlutusV2",
-    script: applyParamsToScript(
-      applyDoubleCborEncoding(validator.compiledCode),
-      [ownerPKH]
-    ),
-  };
-}
-
-export function readLockValidator(
-  ownerPKH: any,
-  mintCS: any
-): Promise<SpendingValidator> {
-  const validator = blueprint.validators[1];
-  
-  return {
-    type: "PlutusV2",
-    script: applyParamsToScript(
-      applyDoubleCborEncoding(validator.compiledCode),
-      [ownerPKH, mintCS]
-    ),
-  };
-}
-
-export function readDistroValidator(ownerPKH: any): Promise<SpendingValidator> {
-  const validator = blueprint.validators[0];
-  return {
-    type: "PlutusV2",
-    script: applyParamsToScript(
-      applyDoubleCborEncoding(validator.compiledCode),
-      [ownerPKH]
-    ),
-  };
-}
-
 export type AppliedValidators = {
   redeem: SpendingValidator;
   giftCard: MintingPolicy;
@@ -90,7 +54,7 @@ export function applyParams(
   tokenName: string,
   outputReference: OutRef,
   validators: Validators,
-  lucid: Lucid
+  lucid: Lucid,
 ): AppliedValidators {
   const outRef = new Constr(0, [
     new Constr(0, [outputReference.txHash]),

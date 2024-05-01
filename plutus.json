@@ -1,7 +1,7 @@
 {
   "preamble": {
-    "title": "aiken-lang/frac",
-    "description": "Aiken contracts for project 'aiken-lang/frac'",
+    "title": "aiken-lang/nft_mint",
+    "description": "Aiken contracts for project 'aiken-lang/nft_mint'",
     "version": "0.0.0",
     "plutusVersion": "v2",
     "compiler": {
@@ -12,181 +12,125 @@
   },
   "validators": [
     {
-      "title": "frac.distro",
-      "datum": {
-        "title": "d",
-        "schema": {
-          "$ref": "#/definitions/frac~1DisDatum"
-        }
-      },
+      "title": "oneshot.gift_card",
       "redeemer": {
-        "title": "r",
+        "title": "rdmr",
         "schema": {
-          "$ref": "#/definitions/frac~1DisAction"
+          "$ref": "#/definitions/oneshot~1Action"
         }
       },
       "parameters": [
         {
-          "title": "owner",
-          "schema": {
-            "$ref": "#/definitions/ByteArray"
-          }
-        }
-      ],
-      "compiledCode": "58db010000323232323232232232232253330083253330093370e90011bad3001300b375400829444c8cc004004dd618071807980798079807980798079807980798061baa3002300c375400644a66601c00229404c94ccc030cdc79bae301000200a14a226600600600260200024601a00229309b2b299980319b8748000c01cdd5000899191919299980698078010a4c2c6eb4c034004c034008dd6980580098041baa0011653330043370e900018029baa001132325333009300b002149858dd6980480098031baa00116375c002ae6955ceaab9e5573eae855d101",
-      "hash": "d059efc2364082076076844e2267d6bace69da2c17de69df7c380bc1"
-    },
-    {
-      "title": "frac.lock",
-      "datum": {
-        "title": "d",
-        "schema": {
-          "$ref": "#/definitions/frac~1LockDatum"
-        }
-      },
-      "redeemer": {
-        "title": "r",
-        "schema": {
-          "$ref": "#/definitions/frac~1LockAction"
-        }
-      },
-      "parameters": [
-        {
-          "title": "owner",
+          "title": "token_name",
           "schema": {
             "$ref": "#/definitions/ByteArray"
           }
         },
         {
-          "title": "cs",
+          "title": "utxo_ref",
           "schema": {
-            "$ref": "#/definitions/ByteArray"
+            "$ref": "#/definitions/aiken~1transaction~1OutputReference"
           }
         }
       ],
-      "compiledCode": "58e00100003232323232322322322322322533300a32533300b3370e90011bad3001300d3754008264660020026eb0c040c044c044c044c044c044c044c044c044c038dd5180118071baa00322533301000114a0264a66601c66e3cdd718090010060a51133003003001301200114a24601e00229309b2b299980419b8748000c024dd5000899191919299980798088010a4c2c6eb4c03c004c03c008dd6980680098051baa0011653330063370e900018039baa00113232533300b300d002149858dd6980580098041baa00116375c0026eb80055cd2ab9d5573caae7d5d0aba201",
-      "hash": "ddb2cabd19de06272cafc566a47eedfa17bfb1085947e812dfa11823"
+      "compiledCode": "5901d6010000323232323232322322232323225333009323232533300c3007300d3754002264646464a666026602c00426464a666024601a60266ea803854ccc048c034c04cdd5191980080080311299980b8008a60103d87a80001323253330163375e603660306ea800804c4cdd2a40006603400497ae0133004004001301b002301900115333012300c00113371e00402029405854ccc048cdc3800a4002266e3c0080405281bad3013002375c60220022c6028002664464a666022601660246ea800452f5bded8c026eacc058c04cdd5000991980080080191299980a8008a6103d87a8000132323253330153371e00c6eb8c05800c4cdd2a4000660326e980052f5c026600a00a0046eacc058008c064008c05c004c8cc004004dd5980a180a980a980a980a8019129998098008a5eb7bdb1804c8c8c8c94ccc050cdc7a45000021003133018337606ea4008dd3000998030030019bab3015003375c6026004602e004602a0026eb8c04cc040dd50019bac3012001300e37540042c60206022004601e00260166ea80045261365632533300830030011533300b300a37540082930b0a99980418010008a99980598051baa00414985858c020dd50019b8748008dc3a40006eb80055cd2ab9d5573caae7d5d02ba15745",
+      "hash": "a41518d18f7b0a8f20a933b805b293a97f56b2074880dad7a4dfb8d3"
     },
     {
-      "title": "frac.mint",
-      "redeemer": {
-        "title": "r",
+      "title": "oneshot.redeem",
+      "datum": {
+        "title": "_d",
         "schema": {
-          "$ref": "#/definitions/frac~1MintAction"
+          "$ref": "#/definitions/Data"
+        }
+      },
+      "redeemer": {
+        "title": "_r",
+        "schema": {
+          "$ref": "#/definitions/Data"
         }
       },
       "parameters": [
         {
-          "title": "owner",
+          "title": "token_name",
+          "schema": {
+            "$ref": "#/definitions/ByteArray"
+          }
+        },
+        {
+          "title": "policy_id",
           "schema": {
             "$ref": "#/definitions/ByteArray"
           }
         }
       ],
-      "compiledCode": "59043d010000323232323232322322323225333007323232533300a3006300b3754002264646464646464646464a66602e6034004264646464a66603064660020026eb0c078c07cc07cc07cc07cc07cc07cc07cc07cc06cdd500891299980e8008a50132533301b3371e6eb8c08000806452889980180180098100008991919191919299980f18079bad30233020375403626464a66604066002028464a66604466e1d200430233754002264602866600a6eacc01cc094dd500180c807981398121baa001163004302337540022a66604066002028466e1cccc00cdd5980298119baa00101700b375a600a60466ea80784c8c8c94ccc08cc05003854ccc08ccdc38061bad3007302537540402a666046004200229405280a503300800c3300900248008cc01c034cc02000520003005375c600660446ea8074585888c8cc00400400c894ccc0980045280992999812180218148010a5113300300300130290012223253330223013302337540022900009bad30273024375400264a666044602660466ea8004530103d87a80001323300100137566050604a6ea8008894ccc09c004530103d87a8000132323253330273371e00e6eb8c0a000c4c068cc0acdd4000a5eb804cc014014008dd6981400118158011814800998098018010991919299981099b8700c4800454ccc084cdc380519b8148000dd6980298119baa01e15333021002100114a029405281980300519803801240046600a0166600c002900018019bae300130203754036460466048604800246044604600246466600200297ae110544000643b000810544001bc28000198109ba900233021375200497ae0222533302200214bd700991929998120018a5eb804cc094dd499b8a002375c604c00666600a00a002604e006604c0066eb8c090008894ccc070c060c074dd5000899b8f002375c6042603c6ea800458c0040048894ccc078008530103d87a800013232533301d30190031301033021375200497ae0133300500500133700006900098110019bae302000216375a60320086eb8c05c00cdd6980b8021bae301500316301800130180023016001325333011300230123754002297adef6c6013756602c60266ea8004cc008c8cc004004dd5980b180b980b80311299980a8008a5eb7bdb1804c8c8c8c94ccc058cdc7a44100002100313301a337606ea4008dd3000998030030019bab3017003375c602a0046032004602e00200c6e1d200222323300100100322533301500114c103d87a8000132323253330153371e00c6eb8c05800c4c020cc064dd3000a5eb804cc014014008dd5980b001180c801180b8009ba548000dd618088009808980898069baa003375c601e60186ea800458c038c03c008c034004c024dd50008a4c26caca66600a6002600c6ea80084c8c8c8c8c8c94ccc038c04400852616375c601e002601e0046eb4c034004c034008dd6980580098039baa00216370e90001bae0015734aae7555cf2ab9f5740ae855d101",
-      "hash": "72fe4715a9e8a53e210145ad19f4e5ec000baf17f73a0ebc299a5c75"
+      "compiledCode": "5901110100003232323232323223223222253330083232533300d3010002132533300b3370e6eb4c034009200113371e0020122940dd718058008b180700099299980499b8748008c028dd50008a5eb7bdb1804dd5980718059baa001323300100132330010013756601e602060206020602060186ea8c03cc030dd50019129998070008a5eb7bdb1804c8c8c8c94ccc03ccdc7a45000021003133013337606ea4008dd3000998030030019bab3010003375c601c0046024004602000244a66601a002298103d87a80001323232533300d3371e0126eb8c03800c4cdd2a4000660226e980052f5c026600a00a0046eacc038008c044008c03c00452613656375c0026eb80055cd2ab9d5573caae7d5d02ba15745",
+      "hash": "45b4844846c11d3fe5e25b006ea3296d313e7b3940b092e16d48308c"
     }
   ],
   "definitions": {
     "ByteArray": {
       "dataType": "bytes"
     },
+    "Data": {
+      "title": "Data",
+      "description": "Any Plutus data."
+    },
     "Int": {
       "dataType": "integer"
     },
-    "frac/DisAction": {
-      "title": "DisAction",
+    "aiken/transaction/OutputReference": {
+      "title": "OutputReference",
+      "description": "An `OutputReference` is a unique reference to an output on-chain. The `output_index`\n corresponds to the position in the output list of the transaction (identified by its id)\n that produced that output",
       "anyOf": [
         {
-          "title": "DisAction",
+          "title": "OutputReference",
           "dataType": "constructor",
           "index": 0,
           "fields": [
             {
-              "title": "a",
-              "$ref": "#/definitions/Int"
+              "title": "transaction_id",
+              "$ref": "#/definitions/aiken~1transaction~1TransactionId"
             },
             {
-              "title": "b",
+              "title": "output_index",
               "$ref": "#/definitions/Int"
             }
           ]
         }
       ]
     },
-    "frac/DisDatum": {
-      "title": "DisDatum",
+    "aiken/transaction/TransactionId": {
+      "title": "TransactionId",
+      "description": "A unique transaction identifier, as the hash of a transaction body. Note that the transaction id\n isn't a direct hash of the `Transaction` as visible on-chain. Rather, they correspond to hash\n digests of transaction body as they are serialized on the network.",
       "anyOf": [
         {
-          "title": "DisDatum",
+          "title": "TransactionId",
           "dataType": "constructor",
           "index": 0,
           "fields": [
             {
-              "title": "a",
-              "$ref": "#/definitions/Int"
-            }
-          ]
-        }
-      ]
-    },
-    "frac/LockAction": {
-      "title": "LockAction",
-      "anyOf": [
-        {
-          "title": "LockAction",
-          "dataType": "constructor",
-          "index": 0,
-          "fields": [
-            {
-              "title": "a",
-              "$ref": "#/definitions/Int"
-            },
-            {
-              "title": "b",
-              "$ref": "#/definitions/Int"
-            }
-          ]
-        }
-      ]
-    },
-    "frac/LockDatum": {
-      "title": "LockDatum",
-      "anyOf": [
-        {
-          "title": "LockDatum",
-          "dataType": "constructor",
-          "index": 0,
-          "fields": [
-            {
-              "title": "a",
-              "$ref": "#/definitions/Int"
-            }
-          ]
-        }
-      ]
-    },
-    "frac/MintAction": {
-      "title": "MintAction",
-      "anyOf": [
-        {
-          "title": "MintAction",
-          "dataType": "constructor",
-          "index": 0,
-          "fields": [
-            {
-              "title": "a",
-              "$ref": "#/definitions/Int"
-            },
-            {
-              "title": "b",
-              "$ref": "#/definitions/Int"
-            },
-            {
-              "title": "tn",
+              "title": "hash",
               "$ref": "#/definitions/ByteArray"
             }
           ]
+        }
+      ]
+    },
+    "oneshot/Action": {
+      "title": "Action",
+      "anyOf": [
+        {
+          "title": "Mint",
+          "dataType": "constructor",
+          "index": 0,
+          "fields": []
+        },
+        {
+          "title": "Burn",
+          "dataType": "constructor",
+          "index": 1,
+          "fields": []
         }
       ]
     }
